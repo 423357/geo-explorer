@@ -1,0 +1,12 @@
+commands:
+  trilha:
+    description: "Recebe uma tecnologia e retorna um plano de estudos baseado nas trilhas da DIO"
+    file: dio-explore/commands/trilha.md
+
+  desafio:
+    description: "Gera um desafio de código aleatório baseado na tecnologia e nível escolhidos"
+    file: dio-explore/commands/desafio.md
+
+  certificado:
+    description: "Gera um certificado de conclusão com o nome do usuário e a trilha concluída"
+    file: dio-explore/commands/certificado.md
