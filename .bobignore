@@ -11,5 +11,5 @@ dio-explore/data/cache-progresso/
 # Certificados gerados
 dio-explore/docs/certificados-emitidos/
 
-# Arquivos temporários
-*.tmp
+# Arquivos de importação
+*.imp
