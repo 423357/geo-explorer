@@ -1,0 +1,13 @@
+{
+  "name": "dio-explore",
+  "version": "1.0.0",
+  "description": "Submódulo DIO Explorer — trilhas, desafios e certificados",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
