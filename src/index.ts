@@ -3,8 +3,8 @@ import { toolTrilha, toolDesafio, toolCertificado, toolStatus } from './tools/co
 console.log('🚀 IBM Bob Lab MCP iniciado');
 
 // Demonstração rápida dos comandos
-const resultTrilha = toolTrilha('java');
-console.log('=== /trilha java ===');
+const resultTrilha = toolTrilha('Python');
+console.log('=== /trilha Python ===');
 console.log(JSON.stringify(resultTrilha, null, 2));
 
 const resultDesafio = toolDesafio('java', 'basico', 'dist');

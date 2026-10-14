@@ -125,7 +125,7 @@ ${desafio.exemplosEntrada.map((e, i) => `${i + 1}. \`${e}\``).join('\n')}
 ${desafio.exemplosSaida.map((s, i) => `${i + 1}. \`${s}\``).join('\n')}
 
 ---
-*Desafio gerado pelo IBM Bob Lab MCP — DIO*
+*Desafio gerado pelo Geo-Explorer — projeto educacional*
 `;
 
   fs.writeFileSync(caminhoCompleto, conteudo, 'utf-8');

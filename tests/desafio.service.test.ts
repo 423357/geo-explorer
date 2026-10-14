@@ -91,7 +91,7 @@ describe('DesafioService', () => {
       const conteudo = fs.readFileSync(caminho, 'utf-8');
 
       expect(conteudo).toContain(desafio.titulo);
-      expect(conteudo).toContain('Desafio gerado pelo IBM Bob Lab MCP');
+      expect(conteudo).toContain('Desafio gerado pelo Geo-Explorer');
     });
 
     it('nome do arquivo deve conter tecnologia e nível', () => {

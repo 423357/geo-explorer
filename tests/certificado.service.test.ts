@@ -90,7 +90,17 @@ describe('CertificadoService', () => {
 
       expect(conteudo).toContain(cert.codigoValidacao);
     });
+    it('deve deixar explícito que o certificado é fictício', () => {
+      const cert = gerarCertificado('Ana Silva', 'java', 80);
+      const caminho = salvarCertificado(cert, TEST_OUTPUT_DIR);
+      const conteudo = fs.readFileSync(caminho, 'utf-8');
 
+      expect(conteudo).toContain('# Certificado Fictício de Conclusão');
+      expect(conteudo).toContain('Não possui validade acadêmica ou profissional');
+      expect(conteudo).toContain('não é emitido pela DIO');
+      expect(conteudo).toContain('não existe validação externa');
+      expect(conteudo).not.toContain('https://www.dio.me/certificate/');
+    });
     it('nome do arquivo deve conter nome do aluno e trilha', () => {
       const cert = gerarCertificado('Ana Silva', 'java', 80);
       const caminho = salvarCertificado(cert, TEST_OUTPUT_DIR);

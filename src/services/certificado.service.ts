@@ -36,10 +36,10 @@ export function salvarCertificado(certificado: Certificado, outputDir: string = 
 
   const conteudo = `
 ╔══════════════════════════════════════════════════════════════╗
-║              CERTIFICADO DE CONCLUSÃO — DIO                  ║
+║              CERTIFICADO FICTÍCIO — GEO-EXPLORER                ║
 ╚══════════════════════════════════════════════════════════════╝
 
-# Certificado de Conclusão
+# Certificado Fictício de Conclusão
 
 Este documento certifica que
 
@@ -57,12 +57,10 @@ concluiu com êxito a trilha de aprendizado:
 
 ---
 
-> Certificado gerado pelo **IBM Bob Lab MCP**
-> Plataforma: Digital Innovation One (DIO)
-> Valide em: https://www.dio.me/certificate/${certificado.codigoValidacao}
-
+> Certificado fictício gerado pelo **Geo-Explorer** para fins educacionais.
+> Não possui validade acadêmica ou profissional e não é emitido pela DIO.
 ---
-*Este certificado foi emitido eletronicamente e tem validade comprovada pelo código de validação acima.*
+*O código é um identificador local do documento; não existe validação externa.*
   `.trim();
 
   fs.writeFileSync(caminhoCompleto, conteudo, 'utf-8');

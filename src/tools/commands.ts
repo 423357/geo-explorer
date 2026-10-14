@@ -66,7 +66,12 @@ export function toolCertificado(alunoNome: string, trilhaNome: string, outputDir
   }
 
   const trilha = buscarTrilha(trilhaNome);
-  const cargaHoraria = trilha?.duracaoHoras ?? 40;
+
+if (!trilha) {
+  return criarErro(`Trilha não encontrada: ${trilhaNome}`);
+}
+
+const cargaHoraria = trilha.duracaoHoras;
 
   const certificado = gerarCertificado(alunoNome.trim(), trilhaNome.trim(), cargaHoraria);
   const caminho = salvarCertificado(certificado, outputDir);

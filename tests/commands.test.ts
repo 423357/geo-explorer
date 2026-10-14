@@ -109,7 +109,13 @@ describe('Commands Tools — /trilha, /desafio, /certificado, /status', () => {
       const resp = toolCertificado('Ana Silva', '', TEST_DIR);
       expect(resp.sucesso).toBe(false);
     });
+    it('deve recusar certificado para trilha não cadastrada', () => {
+      const resp = toolCertificado('Ana Silva', 'inexistente', TEST_DIR);
 
+      expect(resp.sucesso).toBe(false);
+      expect(resp.erro).toBe('Trilha não encontrada: inexistente');
+      expect(resp.dados).toBeUndefined();
+    });
     it('dados do certificado devem conter código de validação', () => {
       const resp = toolCertificado('Maria Oliveira', 'python', TEST_DIR);
       const dados = resp.dados as { certificado: { codigoValidacao: string } };
