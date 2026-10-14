@@ -1,0 +1,28 @@
+# .bobignore — IBM Bob Lab
+# Arquivos e pastas ignorados pelo IBM Bob neste projeto
+
+# Dependências
+node_modules/
+
+# Variáveis de ambiente (segredos)
+.env
+.env.*
+*.env
+
+# Cache de progresso de trilhas
+data/cache-progresso/
+dio-explore/data/cache-progresso/
+
+# Certificados emitidos (gerados dinamicamente)
+docs/certificados-emitidos/
+dio-explore/docs/certificados-emitidos/
+
+# Arquivos temporários
+*.temp
+*.tmp
+*.bak
+
+# Build e distribuição
+dist/
+build/
+coverage/

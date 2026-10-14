@@ -1,0 +1,27 @@
+{
+  "name": "ibm-bob-lab-mcp",
+  "version": "1.0.0",
+  "description": "Servidor MCP do IBM Bob Lab — expõe trilhas, desafios e certificados DIO para agentes de IA",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "bin": {
+    "ibm-bob-lab-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node node_modules/typescript/bin/tsc",
+    "start": "node dist/index.js",
+    "start:http": "cross-env MCP_TRANSPORT=http node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": ["mcp", "ibm-bob", "dio", "trilhas", "stdio", "http"],
+  "author": "IBM Bob Lab",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.4.5"
+  }
+}
