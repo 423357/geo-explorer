@@ -1,22 +1,27 @@
 {
   "name": "ibm-bob-lab",
   "version": "1.0.0",
-  "description": "Projeto Final DIO Explorer — Servidor MCP integrado ao IBM Bob",
+  "description": "IBM Bob Lab — MCP Server para trilhas de aprendizado DIO",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
-    "test": "jest"
+    "start": "node dist/index.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --coverage --coverageThreshold='{\"global\":{\"lines\":70}}'"
   },
+  "keywords": ["mcp", "ibm-bob", "dio", "trilhas"],
+  "author": "IBM Bob Lab",
+  "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.9.0",
-    "jest": "^29.0.0",
-    "@types/jest": "^29.0.0"
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.2",
+    "typescript": "^5.4.5"
   }
 }

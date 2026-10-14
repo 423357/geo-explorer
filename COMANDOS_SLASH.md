@@ -1,29 +1,65 @@
-# Comandos Slash — DIO Explorer
+# Comandos Slash — IBM Bob Lab MCP
 
-Comandos disponíveis para uso no chat do Bob neste projeto.
+## /trilha
+Consulta trilhas de aprendizado disponíveis na DIO.
 
-## /trilha \<tecnologia\>
-Retorna um plano de estudos completo baseado na trilha encontrada em `trilhas_dio.json`.
+**Uso:**
+```
+/trilha <tecnologia>
+```
 
 **Exemplos:**
-- `/trilha Python`
-- `/trilha JavaScript`
-- `/trilha React`
+```
+/trilha java
+/trilha typescript
+/trilha python
+```
+
+**Retorno:** Lista de módulos, duração estimada e nível de dificuldade.
 
 ---
 
-## /desafio \<tecnologia\> \<nível\>
-Gera um desafio de código aleatório baseado na tecnologia e nível informados.
+## /desafio
+Gera um arquivo de desafio de código para o aluno com base na trilha ativa.
+
+**Uso:**
+```
+/desafio <nivel>
+```
+
+**Níveis:** `basico` | `intermediario` | `avancado`
 
 **Exemplos:**
-- `/desafio Python Básico`
-- `/desafio JavaScript Intermediário`
-- `/desafio Java Avançado`
+```
+/desafio basico
+/desafio intermediario
+```
+
+**Retorno:** Arquivo `desafio_<tecnologia>_<nivel>_<timestamp>.md` gerado em `dist/`.
 
 ---
 
-## /certificado \<nome\> \<tecnologia\>
-Gera um certificado de conclusão com o nome do usuário e a trilha concluída.
+## /certificado
+Gera um certificado de conclusão para o aluno.
+
+**Uso:**
+```
+/certificado <nome_aluno> <trilha>
+```
 
 **Exemplos:**
-- `/certificado "Seu Nome" "Python"`
+```
+/certificado "Ana Silva" java
+```
+
+**Retorno:** Arquivo `certificado_<aluno>_<trilha>_<timestamp>.md` gerado em `dist/`.
+
+---
+
+## /status
+Exibe o status atual do servidor MCP e trilhas carregadas.
+
+**Uso:**
+```
+/status
+```

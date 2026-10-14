@@ -1,0 +1,204 @@
+========================================================================
+  IBM BOB LAB — RELATÓRIO DE TESTES UNITÁRIOS
+  Projeto: ibm-bob-lab (MCP Server para Trilhas DIO)
+  Data   : 2025-06-23
+========================================================================
+
+RESUMO EXECUTIVO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Test Suites  : 6 passaram  /  0 falharam  (6 total)
+  Testes       : 81 passaram /  0 falharam  (81 total)
+  Snapshots    : 0
+  Tempo Total  : ~47 segundos
+  Status Final : ✅ TODOS OS TESTES PASSARAM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COBERTURA DE CÓDIGO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Meta mínima configurada: 70% (linhas, funções, statements) / 60% (branches)
+
+  Arquivo                   | % Stmts | % Branch | % Funcs | % Lines
+  ──────────────────────────────────────────────────────────────────
+  TOTAL (All files)         |   99%   |  77.77%  |  100%   |   99%
+  ──────────────────────────────────────────────────────────────────
+  services/
+    certificado.service.ts  |  100%   |   50%    |  100%   |  100%
+    desafio.service.ts      |  100%   |   50%    |  100%   |  100%
+    trilha.service.ts       |  100%   |  100%    |  100%   |  100%
+  tools/
+    commands.ts             |  97.5%  |  85.71%  |  100%   |  97.5%
+  utils/
+    helpers.ts              |  100%   |  100%    |  100%   |  100%
+  ──────────────────────────────────────────────────────────────────
+
+  ✅ Meta de 70% SUPERADA — Cobertura real: 99% de statements/lines
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SUITES E TESTES DETALHADOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[SUITE 1] TrilhaService — tests/trilha.service.test.ts
+  buscarTrilha()
+    ✅ deve retornar a trilha de Java quando tecnologia é "java"
+    ✅ deve retornar a trilha independente do case ("JAVA")
+    ✅ deve retornar a trilha de TypeScript
+    ✅ deve retornar undefined para tecnologia inexistente
+    ✅ deve retornar trilha com módulos definidos
+    ✅ deve retornar carga horária maior que zero
+  listarTrilhas()
+    ✅ deve retornar array com trilhas disponíveis
+    ✅ deve conter trilha de Java
+    ✅ deve retornar trilhas com todos os campos obrigatórios
+  filtrarPorNivel()
+    ✅ deve retornar trilhas de nível iniciante
+    ✅ deve retornar trilhas de nível intermediario
+    ✅ deve retornar array vazio para nível sem trilhas
+  formatarTrilha()
+    ✅ deve retornar string contendo o título da trilha
+    ✅ deve conter a tecnologia em maiúsculo
+    ✅ deve listar os módulos formatados
+    ✅ deve conter a duração em horas
+  Total: 16/16 ✅
+
+[SUITE 2] DesafioService — tests/desafio.service.test.ts
+  gerarDesafio()
+    ✅ deve gerar desafio java nível básico
+    ✅ deve gerar desafio java nível intermediário
+    ✅ deve gerar desafio java nível avançado
+    ✅ deve retornar undefined para tecnologia sem desafios
+    ✅ deve retornar undefined para nível inexistente
+    ✅ deve retornar desafio com enunciado preenchido
+    ✅ deve retornar desafio com exemplos de entrada e saída
+    ✅ deve aceitar tecnologia em maiúsculo
+  salvarDesafio()
+    ✅ deve salvar arquivo .md no diretório especificado
+    ✅ deve criar o diretório se não existir
+    ✅ arquivo gerado deve conter o enunciado
+    ✅ nome do arquivo deve conter tecnologia e nível
+  Total: 12/12 ✅
+
+[SUITE 3] CertificadoService — tests/certificado.service.test.ts
+  gerarCertificado()
+    ✅ deve gerar certificado com dados corretos
+    ✅ deve gerar um código de validação único
+    ✅ código de validação deve ter 16 caracteres
+    ✅ código de validação deve ser maiúsculo
+    ✅ deve preencher dataEmissao com ISO string válida
+    ✅ deve gerar id único
+  salvarCertificado()
+    ✅ deve salvar arquivo .md no diretório especificado
+    ✅ deve criar diretório se não existir
+    ✅ arquivo deve conter nome do aluno
+    ✅ arquivo deve conter código de validação
+    ✅ nome do arquivo deve conter nome do aluno e trilha
+  formatarCertificado()
+    ✅ deve retornar string com nome do aluno
+    ✅ deve retornar string com nome da trilha
+    ✅ deve retornar string com código de validação
+  Total: 14/14 ✅
+
+[SUITE 4] Helpers Utils — tests/helpers.test.ts
+  criarResposta()
+    ✅ deve criar resposta de sucesso com dados
+    ✅ deve preencher timestamp com ISO string válida
+    ✅ não deve conter campo erro em resposta de sucesso
+  criarErro()
+    ✅ deve criar resposta de erro com mensagem
+    ✅ não deve conter campo dados em resposta de erro
+  validarTecnologia()
+    ✅ deve aceitar tecnologias válidas
+    ✅ deve aceitar tecnologia independente do case
+    ✅ deve rejeitar tecnologias inválidas
+  validarNivel()
+    ✅ deve aceitar níveis válidos
+    ✅ deve rejeitar níveis inválidos
+  sanitizarNome()
+    ✅ deve remover caracteres especiais perigosos
+    ✅ deve fazer trim do nome
+    ✅ deve truncar nomes muito longos
+    ✅ deve preservar letras e espaços
+  gerarTimestamp()
+    ✅ deve retornar string não vazia
+    ✅ não deve conter caracteres inválidos para nomes de arquivo
+  Total: 16/16 ✅
+
+[SUITE 5] Commands Tools — tests/commands.test.ts
+  toolTrilha()
+    ✅ deve retornar trilha de Java com sucesso
+    ✅ deve retornar lista de todas as trilhas quando sem argumento
+    ✅ deve retornar erro para tecnologia inválida
+    ✅ dados da trilha Java devem conter a mensagem formatada
+  toolDesafio()
+    ✅ deve gerar desafio java básico com sucesso
+    ✅ deve criar arquivo de desafio no disco
+    ✅ deve retornar erro para tecnologia inválida
+    ✅ deve retornar erro para nível inválido
+    ✅ deve retornar erro quando desafio não existe para a combinação
+  toolCertificado()
+    ✅ deve gerar certificado para aluno com sucesso
+    ✅ deve criar arquivo de certificado no disco
+    ✅ deve retornar erro para nome de aluno vazio
+    ✅ deve retornar erro para nome de aluno muito curto
+    ✅ deve retornar erro para trilha inválida
+    ✅ dados do certificado devem conter código de validação
+  toolStatus()
+    ✅ deve retornar status online
+    ✅ deve retornar quantidade de trilhas carregadas
+    ✅ deve retornar array de tecnologias
+  Total: 18/18 ✅
+
+[SUITE 6] Integração — Fluxo Completo — tests/integration/fluxo-completo.test.ts
+    ✅ Passo 1 — /trilha java: deve retornar trilha com módulos
+    ✅ Passo 2 — /desafio java basico: deve gerar arquivo de desafio
+    ✅ Passo 3 — /certificado "Ana Silva" java: deve gerar certificado
+    ✅ Fluxo completo — ambos os arquivos gerados devem existir no output
+    ✅ Fluxo de erro — tecnologia inválida não deve gerar arquivo
+  Total: 5/5 ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARTEFATOS GERADOS NOS TESTES (cleanup automático pós-teste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Tipo          | Arquivo gerado (exemplo)
+  ────────────────────────────────────────────────────────────────
+  Desafio       | desafio_java_basico_2025-06-23T...-md
+  Certificado   | certificado_ana_silva_java_2025-06-23T...-md
+  ────────────────────────────────────────────────────────────────
+  Obs: arquivos removidos automaticamente pelo afterAll() dos testes
+
+ESTRUTURA DO PROJETO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ibm-bob-lab-/
+  ├── src/
+  │   ├── index.ts                        # Ponto de entrada
+  │   ├── types/index.ts                  # Interfaces e tipos
+  │   ├── services/
+  │   │   ├── trilha.service.ts           # Busca/lista trilhas
+  │   │   ├── desafio.service.ts          # Gera desafios por nível
+  │   │   └── certificado.service.ts      # Emite certificados
+  │   ├── tools/
+  │   │   └── commands.ts                 # Handlers dos comandos slash
+  │   └── utils/helpers.ts                # Utilitários e validações
+  ├── tests/
+  │   ├── trilha.service.test.ts          # 16 testes unitários
+  │   ├── desafio.service.test.ts         # 12 testes unitários
+  │   ├── certificado.service.test.ts     # 14 testes unitários
+  │   ├── helpers.test.ts                 # 16 testes unitários
+  │   ├── commands.test.ts                # 18 testes unitários
+  │   └── integration/
+  │       └── fluxo-completo.test.ts      # 5 testes de integração
+  ├── jest.config.js
+  ├── package.json
+  ├── tsconfig.json
+  └── COMANDOS_SLASH.md
+
+CONCLUSÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ✅ 81 testes passando (0 falhas)
+  ✅ Cobertura de 99% (meta era 70%)
+  ✅ Fluxo /trilha java → /desafio java basico → /certificado validado
+  ✅ Geração de arquivos .md para desafio e certificado confirmada
+  ✅ Tratamento de erros validado (tecnologias inválidas, níveis inválidos)
+
+  Ferramentas: Jest 29 + ts-jest 29 + TypeScript 5
+  Ambiente   : Node.js / Windows
+========================================================================
