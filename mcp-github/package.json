@@ -1,0 +1,23 @@
+{
+  "name": "mcp-github-server",
+  "version": "1.0.0",
+  "description": "Servidor MCP para operações Git — IBM Bob Lab",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc --watch"
+  },
+  "bin": {
+    "mcp-github-server": "./build/index.js"
+  },
+  "files": ["build"],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}
