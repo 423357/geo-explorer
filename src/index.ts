@@ -1,20 +1,35 @@
 import { toolTrilha, toolDesafio, toolCertificado, toolStatus } from './tools/commands.js';
+const argumentos = process.argv.slice(2);
+const comando = argumentos[0];
+const tecnologia = argumentos[1];
+const nivel = argumentos[2];
+const alunoNome = argumentos[1];
+const trilhaNome = argumentos[2];
 
-console.log('🚀 IBM Bob Lab MCP iniciado');
+if (comando === 'trilha') {
+  const resultado = toolTrilha(tecnologia);
+  console.log(JSON.stringify(resultado, null, 2));
+  process.exitCode = resultado.sucesso ? 0 : 1;
+} else if (comando === 'desafio') {
+  if (!tecnologia || !nivel) {
+    console.log('Uso: node dist/index.js desafio <tecnologia> <nivel>');
+process.exitCode = 1; 
+} else {
+  const resultado = toolDesafio(tecnologia, nivel, 'dist');
+console.log(JSON.stringify(resultado, null, 2));
+process.exitCode = resultado.sucesso ? 0 : 1;
+  }
+} else if (comando === 'certificado') {
+  if (!alunoNome || !trilhaNome) {
+      console.log('Uso: node dist/index.js certificado "<nome completo>" <tecnologia>');
+ process.exitCode = 1;
+    } else {
+    const resultado = toolCertificado(alunoNome, trilhaNome, 'dist');
+    console.log(JSON.stringify(resultado, null, 2));
+    process.exitCode = resultado.sucesso ? 0 : 1;
 
-// Demonstração rápida dos comandos
-const resultTrilha = toolTrilha('Python');
-console.log('=== /trilha Python ===');
-console.log(JSON.stringify(resultTrilha, null, 2));
-
-const resultDesafio = toolDesafio('java', 'basico', 'dist');
-console.log('\n=== /desafio java basico ===');
-console.log(JSON.stringify(resultDesafio, null, 2));
-
-const resultCertificado = toolCertificado('Ana Silva', 'java', 'dist');
-console.log('\n=== /certificado "Ana Silva" java ===');
-console.log(JSON.stringify(resultCertificado, null, 2));
-
-const resultStatus = toolStatus();
-console.log('\n=== /status ===');
-console.log(JSON.stringify(resultStatus, null, 2));
+  }
+} else {
+  console.log('Comandos disponíveis: trilha, desafio e certificado');
+  process.exitCode = 1;
+}
