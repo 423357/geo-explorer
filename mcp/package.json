@@ -7,9 +7,10 @@
   "bin": {
     "ibm-bob-lab-mcp": "./dist/index.js"
   },
-  "scripts": {
-    "build": "node node_modules/typescript/bin/tsc",
+    "scripts": {
+    "build": "npm --prefix .. run build && node node_modules/typescript/bin/tsc",
     "start": "node dist/index.js",
+    "test:smoke": "npm run build && node smoke.mjs",
     "start:http": "cross-env MCP_TRANSPORT=http node dist/index.js",
     "dev": "ts-node src/index.ts"
   },

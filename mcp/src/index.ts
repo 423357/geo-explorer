@@ -14,7 +14,7 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { z } from 'zod';
+import { z } from 'zod/v3';
 import { toolBuscarTrilha, toolGerarDesafio, toolGerarCertificado, toolListarTecnologias } from './tools.js';
 
 // ─── Servidor MCP ─────────────────────────────────────────────────────────────
@@ -33,12 +33,12 @@ server.registerTool(
       'Busca informações detalhadas sobre trilhas de aprendizado DIO. ' +
       'Sem tecnologia lista todas. Com tecnologia retorna: plano de estudos completo, ' +
       'módulos, XP, badges e lives.',
-    inputSchema: z.object({
+    inputSchema: {
       tecnologia: z
         .string()
         .optional()
         .describe('Nome da tecnologia (ex: Python, Java, React). Omita para listar todas.'),
-    }),
+    },
   },
   async ({ tecnologia }) => {
     const resultado = toolBuscarTrilha(tecnologia);
@@ -57,7 +57,7 @@ server.registerTool(
     description:
       'Gera desafios de código com descrição, requisitos, dicas e exemplos. ' +
       'Salva um arquivo Markdown no diretório de saída.',
-    inputSchema: z.object({
+    inputSchema: {
       tecnologia: z.string().describe('Tecnologia do desafio (ex: java, python, typescript)'),
       nivel: z
         .enum(['Basico', 'Intermediario', 'Avancado'])
@@ -66,7 +66,7 @@ server.registerTool(
         .string()
         .optional()
         .describe('Diretório de saída (padrão: dist)'),
-    }),
+    },
   },
   async ({ tecnologia, nivel, outputDir }) => {
     const resultado = toolGerarDesafio(tecnologia, nivel, outputDir);
@@ -85,7 +85,7 @@ server.registerTool(
     description:
       'Emite certificados de conclusão em Markdown. ' +
       'Recebe o nome do aluno e a tecnologia/trilha concluída.',
-    inputSchema: z.object({
+    inputSchema: {
       alunoNome: z.string().min(2).describe('Nome completo do aluno'),
       trilhaNome: z
         .string()
@@ -95,7 +95,7 @@ server.registerTool(
         .string()
         .optional()
         .describe('Diretório de saída (padrão: dist)'),
-    }),
+    },
   },
   async ({ alunoNome, trilhaNome, outputDir }) => {
     const resultado = toolGerarCertificado(alunoNome, trilhaNome, outputDir);
@@ -112,7 +112,7 @@ server.registerTool(
   'listar_tecnologias',
   {
     description: 'Lista todas as 20+ tecnologias disponíveis no servidor MCP.',
-    inputSchema: z.object({}),
+    inputSchema: {},
   },
   async () => {
     const resultado = toolListarTecnologias();
@@ -139,7 +139,7 @@ async function main(): Promise<void> {
     const httpTransport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
 
     const httpServer = createServer((req, res) => {
-      httpTransport.handleRequest(req, res, req.body as unknown);
+      httpTransport.handleRequest(req, res);
     });
 
     await server.connect(httpTransport);
